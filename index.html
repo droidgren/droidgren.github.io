@@ -12,12 +12,15 @@
       color: #222;
       background-color: #f9f9f9;
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
     header {
       background: #fff;
       padding: 40px 20px;
       text-align: center;
       border-bottom: 1px solid #ddd;
+      position: relative; /* Needed for button positioning */
+      transition: background-color 0.3s, border-color 0.3s;
     }
     header img {
       width: 150px;
@@ -25,6 +28,7 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #444;
+      transition: border-color 0.3s;
     }
     header h1 {
       margin: 20px 0 10px;
@@ -45,16 +49,19 @@
       padding-bottom: 8px;
       margin-bottom: 20px;
       font-size: 24px;
+      transition: border-color 0.3s;
     }
     .project {
       margin-bottom: 28px;
       padding-bottom: 12px;
       border-bottom: 1px solid #ccc;
+      transition: border-color 0.3s;
     }
     .project a {
       font-size: 20px;
       text-decoration: none;
       color: #005bb5;
+      transition: color 0.3s;
     }
     .project a:hover {
       text-decoration: underline;
@@ -70,20 +77,83 @@
       border-top: 1px solid #ddd;
       font-size: 14px;
       color: #555;
+      transition: border-color 0.3s, color 0.3s;
     }
-    /* Style for the obfuscated email link to inherit standard link colors */
     .contact-link {
         color: #005bb5;
         text-decoration: none;
+        transition: color 0.3s;
     }
     .contact-link:hover {
         text-decoration: underline;
+    }
+    .footer-link {
+        color: #555;
+        text-decoration: underline;
+        transition: color 0.3s;
+    }
+
+    /* Toggle Button Styles */
+    #theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      color: #333;
+    }
+    #theme-toggle:hover {
+      background-color: #ddd;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode header {
+      background-color: #1e1e1e;
+      border-bottom-color: #333;
+    }
+    body.dark-mode header img {
+      border-color: #bbb;
+    }
+    body.dark-mode h2 {
+      border-bottom-color: #bbb;
+    }
+    body.dark-mode .project {
+      border-bottom-color: #333;
+    }
+    body.dark-mode .project a, 
+    body.dark-mode .contact-link {
+      color: #66b0ff; /* Lighter blue for dark background */
+    }
+    body.dark-mode footer {
+      border-top-color: #333;
+      color: #aaa;
+    }
+    body.dark-mode .footer-link {
+      color: #aaa;
+    }
+    body.dark-mode #theme-toggle {
+      background-color: #333;
+      color: #fff;
+      border-color: #555;
+    }
+    body.dark-mode #theme-toggle:hover {
+      background-color: #444;
     }
   </style>
 </head>
 <body>
 
   <header>
+    <button id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
     <img src="me.png" alt="Photo of me">
     <h1>Anders Dahlgren</h1>
     <p>Biomedical Engineer | Medical Imaging & Information Systems</p>
@@ -138,7 +208,7 @@
       I’m a biomedical engineer specializing in medical imaging and information systems. My work focuses on the intersection of diagnostic imaging, computational engineering, and software tooling. I build utilities that improve workflows — from imaging network testing tools to geospatial utilities and automation scripts.
     </p>
     <p>
-      I enjoy solving complex problems in code and systems, applying principles of software engineering in domains like healthcare data, smart home automation, and geospatial analysis. On the personal side, I’m an avid runner — especially long distances and ultramarathons — and I appreciate outdoor experiences and exploration.
+      I enjoy solving complex problems in code and systems, applying principles of software engineering in domains like healthcare data, smart home automation, and geospatial analysis. On the personal side, I’m an father of one, avid runner — especially long distances and ultramarathons — and I appreciate outdoor experiences and exploration.
     </p>
   </section>
 
@@ -153,8 +223,43 @@
   </section>
 
   <footer>
-    &copy; 2026 Anders Dahlgren – <a href="https://github.com/droidgren" target="_blank" style="color: #555; text-decoration: underline;">View on GitHub</a>
+    &copy; 2026 Anders Dahlgren – <a href="https://github.com/droidgren" target="_blank" class="footer-link">View on GitHub</a>
   </footer>
+
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    function toggleTheme() {
+      body.classList.toggle('dark-mode');
+      updateButtonText();
+    }
+
+    function updateButtonText() {
+      if (body.classList.contains('dark-mode')) {
+        toggleButton.textContent = 'Light';
+      } else {
+        toggleButton.textContent = 'Dark';
+      }
+    }
+
+    // Automatically set theme based on time
+    function setInitialTheme() {
+      const hour = new Date().getHours();
+      // Consider "night" to be before 6 AM or after 6 PM (18:00)
+      const isNight = hour < 6 || hour >= 18;
+
+      if (isNight) {
+        body.classList.add('dark-mode');
+      }
+      // If it's day, we stick to default (light mode)
+      
+      updateButtonText();
+    }
+
+    // Initialize on load
+    setInitialTheme();
+  </script>
 
 </body>
 </html>
