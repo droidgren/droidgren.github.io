@@ -57,18 +57,27 @@
       border-bottom: 1px solid #ccc;
       transition: border-color 0.3s;
     }
-    .project a {
+    .project > a {
       font-size: 20px;
       text-decoration: none;
       color: #005bb5;
       transition: color 0.3s;
     }
-    .project a:hover {
+    .project > a:hover {
       text-decoration: underline;
     }
     .project p {
       margin: 6px 0;
       font-size: 16px;
+    }
+    .project p a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .project p a:hover {
+      color: #005bb5;
+      text-decoration: underline;
     }
     footer {
       text-align: center;
@@ -129,8 +138,11 @@
     body.dark-mode .project {
       border-bottom-color: #333;
     }
-    body.dark-mode .project a, 
+    body.dark-mode .project > a,
     body.dark-mode .contact-link {
+      color: #66b0ff;
+    }
+    body.dark-mode .project p a:hover {
       color: #66b0ff;
     }
     body.dark-mode footer {
@@ -170,6 +182,15 @@
       </a>
       <p>
         A lightweight tool to simulate a DICOM Modality Worklist SCU for testing and validating worklist services on PACS/RIS systems. Uses the fo-dicom library and supports querying, TLS, and flexible tag views — ideal for diagnostic imaging workflows and network verification.
+      </p>
+    </div>
+
+    <div class="project">
+      <a href="https://github.com/droidgren/garmin-LL-HRzone" target="_blank">
+        LL-HRzone &amp; LL-MHRZone
+      </a>
+      <p>
+        A pair of Garmin Connect IQ data fields for heart-rate guided training. <a href="https://github.com/droidgren/garmin-LL-HRzone" target="_blank">LL-HRzone</a> provides clear live zone feedback, while <a href="https://github.com/droidgren/garmin-LL-MHRZone" target="_blank">LL-MHRZone</a> helps pace effort by max heart-rate zones. Together they make it easier to stay in the intended intensity during workouts and long runs.
       </p>
     </div>
 
