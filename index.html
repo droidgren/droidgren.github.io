@@ -70,12 +70,25 @@
       margin: 6px 0;
       font-size: 16px;
     }
-    .project p a {
+    .project ul {
+      margin: 6px 0;
+      padding-left: 20px;
+      font-size: 16px;
+    }
+    .project li {
+      margin: 4px 0;
+    }
+    .project li > a:first-child {
+      font-weight: 600;
+    }
+    .project p a,
+    .project li a {
       color: inherit;
       text-decoration: none;
       transition: color 0.3s;
     }
-    .project p a:hover {
+    .project p a:hover,
+    .project li a:hover {
       color: #005bb5;
       text-decoration: underline;
     }
@@ -142,7 +155,8 @@
     body.dark-mode .contact-link {
       color: #66b0ff;
     }
-    body.dark-mode .project p a:hover {
+    body.dark-mode .project p a:hover,
+    body.dark-mode .project li a:hover {
       color: #66b0ff;
     }
     body.dark-mode footer {
@@ -186,12 +200,19 @@
     </div>
 
     <div class="project">
-      <a href="https://github.com/droidgren/garmin-LL-HRzone" target="_blank">
-        LL-HRzone &amp; LL-MHRZone
+      <a href="https://apps.garmin.com/en-US/developer/8829bd8c-f88e-4a95-81bb-dc359947ac3f/apps" target="_blank">
+        Garmin Connect IQ Data Fields
       </a>
       <p>
-        A pair of Garmin Connect IQ data fields for heart-rate guided training. <a href="https://github.com/droidgren/garmin-LL-HRzone" target="_blank">LL-HRzone</a> provides clear live zone feedback, while <a href="https://github.com/droidgren/garmin-LL-MHRZone" target="_blank">LL-MHRZone</a> helps pace effort by max heart-rate zones. Together they make it easier to stay in the intended intensity during workouts and long runs.
+        Free Connect IQ data fields for heart-rate and power guided training, built for running, cycling and interval sessions.
       </p>
+      <ul>
+        <li><a href="https://apps.garmin.com/en-US/apps/6cb0fee6-ba29-4bef-993a-6c04f84559d9" target="_blank">Power Zone Gauge Index</a> – shows your power zone as a full ring, half ring or bar, as a decimal index, watts or percentage of FTP/threshold (seven cycling zones, five running zones).</li>
+        <li><a href="https://apps.garmin.com/en-US/apps/4fef4527-0428-4b4c-868f-8c24428ab983" target="_blank">HR Zone Gauge Index</a> – the same gauge for heart rate, using the zones already configured on your watch, as a zone index, heart rate or percentage of max.</li>
+        <li><a href="https://apps.garmin.com/en-US/apps/4e222e42-7b5e-401a-99a1-d221eea68bb6" target="_blank">Last Lap HR Zone</a> – average heart-rate zone index (0.1–6.0) of your last completed lap, colored by zone. <a href="https://github.com/droidgren/garmin-LL-HRzone" target="_blank">(source)</a></li>
+        <li><a href="https://apps.garmin.com/en-US/apps/4c9e0ac0-dc40-4ae1-abb9-198f0cbeb1c4" target="_blank">Last Lap Max HR Zone</a> – max heart-rate zone index of your last completed lap, colored by zone. <a href="https://github.com/droidgren/garmin-LL-MHRZone" target="_blank">(source)</a></li>
+        <li><a href="https://apps.garmin.com/en-US/apps/578bf926-2e1c-4afa-bcd7-6de9e85b9e64" target="_blank">SkipLap</a> – counts every other lap, so interval sessions show your rep number instead of the raw lap count.</li>
+      </ul>
     </div>
 
     <div class="project">
